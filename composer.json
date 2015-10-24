@@ -1,0 +1,22 @@
+{
+    "name": "nikapps/iran-banking-batch-payment",
+    "description": "TODO",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hossein Moradgholi",
+            "email": "hossein@moradgholi.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "sabre/xml": "^1.2",
+        "fisharebest/ext-calendar": "^2.1"
+    },
+    "autoload" : {
+        "psr-4": {
+            "Nikapps\\BatchPayment\\": "src/"
+        }
+    }
+}
