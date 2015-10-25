@@ -13,11 +13,48 @@ class PayaPaymentInfo
 
     private $paymentInfoId = 1;
     private $paymentMethod = "TRF";
-    private $numberOfTransactions;
-    private $totalTransactionsAmount;
     private $requestDate;
     private $payerName;
     private $payerIban;
+    private $payments;
+
+
+    /**
+     * @param PayaPayment $payaPayment
+     */
+    public function addPayment(PayaPayment $payaPayment)
+    {
+        $this->payments[] = $payaPayment;
+    }
+
+    /**
+     * @return int|mixed
+     */
+    public function getTotalTransactionsAmount(){
+        $total = 0;
+        /** @var PayaPayment $payment */
+        foreach ($this->payments as $payment) {
+            $total += $payment->getAmount();
+        }
+
+        return $total;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumberOfPayments(){
+        return count($this->payments);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPayments()
+    {
+        return $this->payments;
+    }
+
 
     /**
      * @return int
@@ -49,38 +86,6 @@ class PayaPaymentInfo
     public function setPaymentMethod($paymentMethod)
     {
         $this->paymentMethod = $paymentMethod;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNumberOfTransactions()
-    {
-        return $this->numberOfTransactions;
-    }
-
-    /**
-     * @param mixed $numberOfTransactions
-     */
-    public function setNumberOfTransactions($numberOfTransactions)
-    {
-        $this->numberOfTransactions = $numberOfTransactions;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalTransactionsAmount()
-    {
-        return $this->totalTransactionsAmount;
-    }
-
-    /**
-     * @param mixed $totalTransactionsAmount
-     */
-    public function setTotalTransactionsAmount($totalTransactionsAmount)
-    {
-        $this->totalTransactionsAmount = $totalTransactionsAmount;
     }
 
     /**
