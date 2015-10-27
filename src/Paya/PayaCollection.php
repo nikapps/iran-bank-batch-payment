@@ -97,19 +97,19 @@ class PayaCollection
         $writer->writeElement('ReqdExctnDt',$this->payaPaymentInfo->getRequestDate());
 
         $writer->startElement('Dbtr');
-        $writer->writeElement('Nm', $this->payaPaymentInfo->getPayerName());
+            $writer->writeElement('Nm', $this->payaPaymentInfo->getPayerName());
         $writer->endElement();
 
         $writer->startElement('DbtrAcct');
-        $writer->startElement('Id');
-        $writer->writeElement('IBAN', $this->payaPaymentInfo->getPayerIban());
-        $writer->endElement();
+            $writer->startElement('Id');
+                $writer->writeElement('IBAN', $this->payaPaymentInfo->getPayerIban());
+            $writer->endElement();
         $writer->endElement();
 
-        $writer->startElement('DbtrAcct');
-        $writer->startElement('FinInstnId');
-        $writer->writeElement('BIC', 'BMJIIRTHXXX');
-        $writer->endElement();
+        $writer->startElement('DbtrAgt');
+            $writer->startElement('FinInstnId');
+                $writer->writeElement('BIC', 'BMJIIRTHXXX');
+            $writer->endElement();
         $writer->endElement();
 
         /** @var PayaPayment $payment */
