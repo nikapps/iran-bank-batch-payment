@@ -13,6 +13,23 @@ class PayaCollection
 {
     /** @var  PayaPaymentInfo */
     private $payaPaymentInfo;
+    private $messageId;
+
+    /**
+     * @return mixed
+     */
+    public function getMessageId()
+    {
+        return $this->messageId;
+    }
+
+    /**
+     * @param mixed $messageId
+     */
+    public function setMessageId($messageId)
+    {
+        $this->messageId = $messageId;
+    }
 
     /**
      * @param PayaPaymentInfo $payaPaymentInfo
@@ -40,7 +57,7 @@ class PayaCollection
         // header
         $writer->startElement('CstmrCdtTrfInitn');
             $writer->startElement('GrpHdr');
-                $writer->writeElement('MsgId', $this->getPayaPaymentInfo()->getPayerIban());
+                $writer->writeElement('MsgId', $this->getMessageId());
                 $writer->writeElement('CreDtTm', $this->getPayaPaymentInfo()->getRequestDate());
                 $writer->writeElement('NbOfTxs', $this->getPayaPaymentInfo()->getNumberOfPayments());
                 $writer->writeElement('CtrlSum', $this->getPayaPaymentInfo()->getTotalTransactionsAmount());
