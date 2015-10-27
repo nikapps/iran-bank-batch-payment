@@ -123,6 +123,6 @@ class PayaCollection
         $writer->endElement();
         $writer->endElement();
         $writer->endDocument();
-        print $writer->outputMemory();
+        return $writer->outputMemory();
     }
 }
